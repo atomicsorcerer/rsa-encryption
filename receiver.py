@@ -16,7 +16,7 @@ if str(sys.argv[1]) == "decrypt":
 
     n = int(input("Enter n: "))
 
-    private_key = int(input("Enter Secret Key: "))
+    private_key = int(input("Enter Private Key: "))
 
     decipher_text = get_original_message(message, n, private_key)
 
