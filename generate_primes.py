@@ -1,3 +1,10 @@
+"""
+RSA Encryption from Scratch
+Empire Encryption
+© Atomic Sorcerer 2022
+"""
+
+
 import random
 
 first_primes_list = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
@@ -51,7 +58,7 @@ def is_miller_rabin_passed(mrc):
     return True
 
 
-def get_prime(bit_size=128):
+def get_prime(bit_size=8):
     while True:
         prime_candidate = get_low_level_prime(bit_size)
         if not is_miller_rabin_passed(prime_candidate):

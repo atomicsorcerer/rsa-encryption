@@ -1,3 +1,10 @@
+"""
+RSA Encryption from Scratch
+Empire Encryption
+© Atomic Sorcerer 2022
+"""
+
+
 from lib import convert_to_ascii
 
 e = int(input("Enter Exponent: "))
