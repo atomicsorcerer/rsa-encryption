@@ -5,20 +5,8 @@ Empire Encryption
 """
 
 
-from math import gcd
-
-
-def phi(n, x=None):
-    if x is None:
-        result = 1
-
-        for i in range(2, n):
-            if gcd(i, n) == 1:
-                result += 1
-
-        return result
-    else:
-        return (n - 1) * (x - 1)
+def phi(x, y):
+    return (x - 1) * (y - 1)
 
 
 def egcd(a, b):
@@ -34,7 +22,7 @@ def egcd(a, b):
 def mod_inv(a, m):
     gcd, x, y = egcd(a, m)
     if gcd != 1:
-        return None  # modular inverse does not exist
+        return None
     else:
         return x % m
 
