@@ -7,7 +7,7 @@ Empire Encryption
 
 from lib import convert_to_ascii
 
-e = int(input("Enter Exponent: "))
+e = int(input("Enter Exponent (65537): ") or 65537)
 
 n = int(input("Enter N (other part of public key): "))
 
