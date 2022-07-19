@@ -15,7 +15,7 @@ message = str(input("Enter message: "))
 
 ascii_message = convert_to_ascii(message)
 
-cipher_text = [(i ** e) % n for i in ascii_message]
+cipher_text = [(i**e) % n for i in ascii_message]
 
 if __name__ == "__main__":
     print(cipher_text)

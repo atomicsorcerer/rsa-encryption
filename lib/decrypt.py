@@ -17,6 +17,8 @@ def get_original_message(message, private_key, p, q, n):
 
     message_list = [int(i) for i in message_list]
 
-    decipher_text = convert_from_ascii([int(decrypt(i, private_key, p, q, n)) for i in message_list])
+    decipher_text = convert_from_ascii(
+        [int(decrypt(i, private_key, p, q, n)) for i in message_list]
+    )
 
     return decipher_text

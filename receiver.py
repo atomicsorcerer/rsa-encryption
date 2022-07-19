@@ -67,7 +67,7 @@ elif option == "get_keys":
         keys_file.write("--Public Key--\n")
         keys_file.write(f"n = {n}\n")
         keys_file.write(f"e = {e}\n\n")
-        
+
         keys_file.write("--Private Key--\n")
         keys_file.write(f"p = {p}\n")
         keys_file.write(f"q = {q}\n")
