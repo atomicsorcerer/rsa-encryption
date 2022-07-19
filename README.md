@@ -1,9 +1,9 @@
 > Disclaimer: project under development
 
 # RSA Encryption from Scratch
-A full implementation of RSA encryption from scratch
+A full implementation of the original RSA encryption from scratch
 ## Description
-RSA encryption secures the modern digital world. RSA encryption relies on modular arithmetic and how difficult it is to factor the product of two large prime numbers. This project aims to show how this encryption works in an accessible manner.
+RSA encryption secures the modern digital world. RSA encryption relies on modular arithmetic and how difficult it is to factor the product of two large prime numbers. This project aims to show how this encryption originally worked in an accessible manner. Though some of the math tricks have changed, the core idea of RSA remains the same.
 ## Dependencies
 Since this project aims to transparently show how RSA encryption works, the only dependencies are the python standard library and the built-in math module.
 ## Usage
@@ -11,15 +11,21 @@ RSA encryption works with the receiver first sharing a public key. There are two
 ```commandline
 $ python receiver.py get_keys
 
+--Public Key--
 n = ...
-e = 65537 (this is the standard for RSA encryption)
-Private Key (keep secret) = ...
+e = 65537 (this is standard for RSA encryption)
+
+--Private Key--
+p = ...
+q = ...
+Private Key = ...
+
 ```
 After sharing the values of `n` and `e`, the public key, the sender can run the following command to encrypt a message.
 ```commandline
 $ python sender.py
 
-Enter Exponent (65537): ...
+Enter Exponent: ...
 Enter N (other part of public key): ...
 Enter message: "..."
 ```

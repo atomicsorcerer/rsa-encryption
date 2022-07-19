@@ -8,7 +8,7 @@ Empire Encryption
 from lib.utils import mod_inv, phi
 from lib.decrypt import get_original_message
 from lib.generate_primes import get_prime
-import os.path
+from settings import E
 import sys
 
 
@@ -37,7 +37,7 @@ elif option == "get_keys":
 
     q = get_prime()
 
-    e = 65537
+    e = E
 
     n = p * q
 
@@ -64,7 +64,7 @@ elif option == "get_keys":
     if do_save:
         keys_file = open("keys.txt", "w")
 
-        keys_file.write("--Public Key--")
+        keys_file.write("--Public Key--\n")
         keys_file.write(f"n = {n}\n")
         keys_file.write(f"e = {e}\n\n")
         

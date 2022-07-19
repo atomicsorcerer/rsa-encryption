@@ -5,4 +5,6 @@ Empire Encryption
 """
 
 
-KEY_BIT_SIZE = 512
+KEY_BIT_SIZE = 16
+
+E = 65537
