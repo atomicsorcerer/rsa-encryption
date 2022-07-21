@@ -1,3 +1,4 @@
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 # RSA Encryption from Scratch
 A full implementation of the original RSA encryption method from scratch
 ## Description
