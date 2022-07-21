@@ -3,8 +3,6 @@ RSA Encryption from Scratch
 Empire Encryption
 © Atomic Sorcerer 2022
 """
-
-
 from settings import KEY_BIT_SIZE
 import random
 

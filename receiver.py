@@ -3,11 +3,7 @@ RSA Encryption from Scratch
 Empire Encryption
 © Atomic Sorcerer 2022
 """
-
-
-from lib.utils import mod_inv, phi
-from lib.decrypt import get_original_message
-from lib.generate_primes import get_prime
+from lib.decrypt import get_original_message, get_keys
 from settings import E
 import sys
 
@@ -18,6 +14,7 @@ try:
     option = str(sys.argv[1])
 except IndexError:
     pass
+
 
 if option == "decrypt":
     message = str(input("Enter Cipher Text: "))
@@ -33,20 +30,14 @@ if option == "decrypt":
     print("\nDeciphered Message: " + "".join(decipher_text))
 
 elif option == "get_keys":
-    p = get_prime()
-
-    q = get_prime()
-
-    e = E
+    p, q, private_key = get_keys()
 
     n = p * q
-
-    private_key = mod_inv(e, phi(p, q))
 
     print("--Public Key--")
 
     print(f"n = {n}")
-    print(f"e = {e}\n")
+    print(f"e = {E}\n")
 
     print("--Private Key--")
     print(f"p = {p}")
@@ -66,7 +57,7 @@ elif option == "get_keys":
 
         keys_file.write("--Public Key--\n")
         keys_file.write(f"n = {n}\n")
-        keys_file.write(f"e = {e}\n\n")
+        keys_file.write(f"e = {E}\n\n")
 
         keys_file.write("--Private Key--\n")
         keys_file.write(f"p = {p}\n")
