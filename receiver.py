@@ -74,4 +74,4 @@ else:
 
 end = time.time()
 
-print(f"Time-to-Complete: {str(round(end - start, 4))}s")
+print(f"\nTime-to-Complete: {str(round(end - start, 4))}s")
