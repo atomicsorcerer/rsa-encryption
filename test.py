@@ -9,9 +9,7 @@ from settings import E
 import time
 
 
-def run_test(
-    key_size: int, e: int, sample_message: str
-) -> tuple[str, int, int, int]:
+def run_test(key_size: int, e: int, sample_message: str) -> tuple[str, int, int, int]:
     p, q, private_key = get_keys(key_size=key_size, e=e)
     n = p * q
 
@@ -19,17 +17,12 @@ def run_test(
 
     decrypted_message = get_original_message(encrypted_message, private_key, p, q, n)
 
-    return (
-        "".join(decrypted_message),
-        p,
-        q,
-        private_key
-    )
+    return ("".join(decrypted_message), p, q, private_key)
 
 
 def run_series_test(
     iterations: int,
-    starting_key_size: int = 16,
+    starting_key_size: int = 8,
     e: int = E,
     sample_message: str = "Hello, world!",
 ) -> None:
@@ -37,9 +30,7 @@ def run_series_test(
 
     for i in range(iterations):
         start = time.time()
-        test_output, p, q, private_key = run_test(
-            current_key_size, e, sample_message
-        )
+        test_output, p, q, private_key = run_test(current_key_size, e, sample_message)
         end = time.time()
 
         if test_output == sample_message:
@@ -54,4 +45,4 @@ def run_series_test(
 
 
 if __name__ == "__main__":
-    run_series_test(9, sample_message="Hello, world!")
+    run_series_test(10, sample_message="Hello, world!")

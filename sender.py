@@ -4,15 +4,25 @@ Empire Encryption
 © Atomic Sorcerer 2022
 """
 from lib.encrypt import encrypt
+from os.path import exists
+import json
 
 
-e = int(input("Enter Exponent: "))
+if not exists("public_key.json"):
+    print("No keys generated")
+    exit()
 
-n = int(input("Enter N (other part of public key): "))
+with open("public_key.json", "r") as jsonFile:
+    data = json.load(jsonFile)
+
+    e = data["e"]
+
+    n = data["n"]
 
 message = str(input("Enter message: "))
 
 cipher_text = encrypt(message, e, n)
 
 if __name__ == "__main__":
-    print(cipher_text)
+    with open("encrypted_message.txt", "w") as message_file:
+        message_file.write(str(cipher_text))

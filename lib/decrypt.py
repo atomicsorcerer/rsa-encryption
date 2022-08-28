@@ -13,7 +13,7 @@ import decimal
 decimal.getcontext().prec = KEY_BIT_SIZE
 
 
-def decrypt(cipher: int, private_key: int, p: int, q: int, mod: int) -> int:
+def decrypt(cipher: int, private_key: int, p: int, q: int) -> int:
     d_p = private_key % (p - 1)
     d_q = private_key % (q - 1)
     q_inv = pow(q, -1, p)
@@ -37,10 +37,10 @@ def get_original_message(
         message_list = [int(i) for i in message_list]
 
         return convert_from_ascii(
-            [decrypt(i, private_key, p, q, n) for i in message_list]
+            [decrypt(i, private_key, p, q) for i in message_list]
         )
 
-    return convert_from_ascii([int(decrypt(i, private_key, p, q, n)) for i in message])
+    return convert_from_ascii([int(decrypt(i, private_key, p, q)) for i in message])
 
 
 def get_keys(key_size: int = KEY_BIT_SIZE, e: int = E) -> tuple[int, int, int]:

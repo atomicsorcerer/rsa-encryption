@@ -6,6 +6,8 @@ Empire Encryption
 from lib.decrypt import get_original_message, get_keys
 from settings import E
 import sys
+import json
+import time
 
 
 option = ""
@@ -15,15 +17,18 @@ try:
 except IndexError:
     pass
 
+start = time.time()
 
 if option == "decrypt":
-    message = str(input("Enter Cipher Text: "))
+    with open("encrypted_message.txt", "r") as encrypted_message:
+        message = encrypted_message.read()
 
-    p = int(input("Enter p: "))
+    with open("private_key.json", "r") as jsonFile:
+        private_key_file = json.load(jsonFile)
 
-    q = int(input("Enter q: "))
-
-    private_key = int(input("Enter Private Key: "))
+        p = private_key_file["p"]
+        q = private_key_file["q"]
+        private_key = private_key_file["private_key"]
 
     decipher_text = get_original_message(message, private_key, p, q, p * q)
 
@@ -47,24 +52,26 @@ elif option == "get_keys":
     do_save = True
 
     try:
-        if sys.argv[2] == "--nosave":
+        if sys.argv.count("--nosave") > 0:
             do_save = False
     except IndexError:
         pass
 
     if do_save:
-        keys_file = open("keys.txt", "w")
+        public_data = {"n": n, "e": E}
 
-        keys_file.write("--Public Key--\n")
-        keys_file.write(f"n = {n}\n")
-        keys_file.write(f"e = {E}\n\n")
+        private_data = {"p": p, "q": q, "private_key": private_key}
 
-        keys_file.write("--Private Key--\n")
-        keys_file.write(f"p = {p}\n")
-        keys_file.write(f"q = {q}\n")
-        keys_file.write(f"Private Key = {private_key}\n")
+        with open("public_key.json", "w") as jsonFile:
+            json.dump(public_data, jsonFile)
 
-        keys_file.close()
+        with open("private_key.json", "w") as jsonFile:
+            json.dump(private_data, jsonFile)
+
 
 else:
     print("Please provide valid option: 'get_keys' or 'decrypt'.")
+
+end = time.time()
+
+print(f"Time-to-Complete: {str(round(end - start, 4))}s")
