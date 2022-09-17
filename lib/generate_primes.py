@@ -7,6 +7,10 @@ from settings import KEY_BIT_SIZE
 import random
 import decimal
 
+"""
+Many functions were sourced here: https://www.geeksforgeeks.org/how-to-generate-large-prime-numbers-for-rsa-algorithm/
+"""
+
 decimal.getcontext().prec = KEY_BIT_SIZE
 
 first_primes_list = [

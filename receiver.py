@@ -31,19 +31,17 @@ if option == "decrypt":
         private_key = private_key_file["private_key"]
 
     decipher_text = get_original_message(message, private_key, p, q, p * q)
+    final_message = "".join(decipher_text)
 
-    print("\nDeciphered Message: " + "".join(decipher_text))
+    print(f"\nDeciphered Message: \033[92m{final_message}\033[0m")
 
 elif option == "get_keys":
     p, q, private_key = get_keys()
-
     n = p * q
 
     print("--Public Key--")
-
     print(f"n = {n}")
     print(f"e = {E}\n")
-
     print("--Private Key--")
     print(f"p = {p}")
     print(f"q = {q}")

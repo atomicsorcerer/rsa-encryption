@@ -17,7 +17,7 @@ def run_test(key_size: int, e: int, sample_message: str) -> tuple[str, int, int,
 
     decrypted_message = get_original_message(encrypted_message, private_key, p, q, n)
 
-    return ("".join(decrypted_message), p, q, private_key)
+    return "".join(decrypted_message), p, q, private_key
 
 
 def run_series_test(
